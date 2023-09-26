@@ -46,7 +46,7 @@ try:
             # output = "{0:.2f} C,{1:.2f} hPa,{2:.2f} %RH".format(
             #     sensor.data.temperature, sensor.data.pressure, sensor.data.humidity
             # )
-            # print(output)
+            # print(
 
         time.sleep(interval)
 except KeyboardInterrupt:
