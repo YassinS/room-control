@@ -10,6 +10,8 @@ from db import SensorData
 
 ser = serial.Serial("/dev/ttyUSB0", 9600)
 
+
+# Im a comment for testing
 db_url = "mysql+pymysql://admin:admin@localhost:3306/sensor_data"
 
 
