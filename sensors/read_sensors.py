@@ -29,16 +29,23 @@ num_of_data_points = 0
 
 try:
     while True:
-        co2 = mh_z19.read()["co2"]
+        try:
+            co2 = mh_z19.read()["co2"]
+        except KeyError:
+            co2 = 0
         print(co2)
         if sensor.get_sensor_data():
             temperature = round(sensor.data.temperature)
             pressure = round(sensor.data.pressure)
             humidity = round(sensor.data.humidity)
-            print(temperature, pressure, humidity)
             dust_mg_per_m3 = float(ser.readline())
+            print(temperature, pressure, humidity, dust_mg_per_m3)
             new_sensor_data = SensorData(
-                co2=co2, temperature=temperature, humidity=humidity, pressure=pressure
+                co2=co2,
+                temperature=temperature,
+                humidity=humidity,
+                pressure=pressure,
+                dust=dust_mg_per_m3,
             )
 
             new_sensor_data.save()
