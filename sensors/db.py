@@ -18,10 +18,10 @@ db = MySQLDatabase(
 class SensorData(Model):
     id = AutoField()
     created_at = DateTimeField(default=datetime.datetime.now)
-    co2 = IntegerField()
-    temperature = IntegerField()
-    humidity = IntegerField()
-    pressure = IntegerField()
+    co2 = FloatField()
+    temperature = FloatField()
+    humidity = FloatField()
+    pressure = FloatField()
     dust = FloatField()
 
     class Meta:
