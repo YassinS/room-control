@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="./assets/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="./assets/styles/baseStyles.css" rel="stylesheet" />
+    <link href="./assets/styles/testStyles.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="./assets/images/piSenData.ico">
+
+    
+    <title>Pi-Sensor Station</title>
+  </head>
+  <body>
+
+      <!--Content Page/Side-->
+      <div class="card" id="backgroundCard">
+        <!--Page Banner-->
+        <div class="b-divider align-items-center">
+          <div class="d-flex justify-content-center">
+            <h4>Homepage</h4>
+          </div>
+        </div>
+        <!--End of Page Banner-->
+
+        <!--start of Page Body-->
+      <div align="center" class="row row-cols-1">
+        <span class="border border-dark rounded">
+          <div>
+           <p>DataSelection Header</p>
+          </div>
+        <div class="card-body" id="dataCard">
+          <p id="id_Out">Test Eintrag:</p>
+          <p id="created_at_Out">Test Eintrag:</p>
+          <p id="co2_Out">Test Eintrag:</p>
+          <p id="temp_Out">Test Eintrag:</p>
+          <p id="humid_Out">Test Eintrag:</p>
+          <p id="press_Out">Test Eintrag:</p>
+          <p id="dust_Out">Test Eintrag:</p>
+        </div>
+      </span>
+    </div>
+        <!--
+          End of Page body
+          Insert Content After:
+        -->
+
+        <!--Footer-->
+        <div class="container">
+          <footer
+            class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top border-dark"
+          >
+            <div class="col mb-3"></div>
+            <div class="col mb-3">
+              <h5>Pi Sensor Site</h5>
+
+              <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                  <p align="center"></p>
+                </li>
+              </ul>
+            </div>
+          </footer>
+        </div>
+        <!--End of Footer-->
+      </div>
+      <!--End of Content Page/Side-->
+    </main>
+
+    <script src="./assets/js/getPiData.js"></script>
+    <script src="./assets/bootstrap/js/bootstrap.bundle.js"></script>
+  </body>
+</html>

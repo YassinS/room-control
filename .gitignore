@@ -51,3 +51,8 @@ docs/_build/
 
 #DB Stuff
 mariadb_data
+
+#Ignore frontend
+web/frontend/node_modules
+web/frontend/note.txt
+web/frontend/public/assets/bootstrap
