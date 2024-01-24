@@ -8,6 +8,8 @@
   <link href="./assets/styles/baseStyles.css" rel="stylesheet" />
   <link href="./assets/styles/testStyles.css" rel="stylesheet" />
   <link rel="icon" type="image/x-icon" href="./assets/images/piSenData.ico">
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
   <title>Pi-Sensor Station</title>
@@ -35,11 +37,32 @@
               <p>DataSelection Header</p>
             </div>
             <!--Filter Bar-->
-            <div align="center" class="row row-cols-2">
+            <div align="center" class="row row-cols-4">
+
               <!--Filter by ID-->
               <div>
-                <input id="filterID" type="text" class="form-control" placeholder="filter by id" value="3"/>
+                <input id="filterID" type="text" class="form-control" placeholder="filter by id" value="3" />
               </div>
+
+              <!--Filter by-->
+              <div>
+                <input id="filterDate" type="text" class="form-control" placeholder="filter by id" value="3"/>
+              </div>
+              <!--Filter by-->
+              <div>
+                <input id="filterCo2" type="text" class="form-control" placeholder="filter by id" value="3"/>
+              </div>
+              
+              <!--Filter by-->
+              <div>
+                <input id="filterCo2" type="text" class="form-control" placeholder="filter by id" value="3"/>
+              </div>
+              
+              <!--Filter by-->
+              <div>
+                <input id="filterCo2" type="text" class="form-control" placeholder="filter by id" value="3"/>
+              </div>
+              <!-- FilterBtn -->
               <div>
                 <button class="btn btn-secondary" value="Filter" width="12VW" height="5VH" type="button" id="startFilterBtn" onclick="filterValues()"/>
               </div>
@@ -58,6 +81,35 @@
       <p id="dust_Out">Test Eintrag:</p>
     </div>
     </span>
+  </div>
+  <div class="card-body" id="chartCard">
+    <h1>Chart entry</h1>
+
+    <canvas id="chartCanvas"></canvas>
+    
+<script>
+      const ctx = document.getElementById('chartCanvas');
+
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+          datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    </script>
+    <h1>End of Chart</h1>
   </div>
   <!--
           End of Page body
@@ -87,6 +139,7 @@
   <script type="text/javascript" src="./assets/jsonTest/sensordata.json"></script>
   <script src="./assets/js/getPiData.js"></script>
   <script src="./assets/bootstrap/js/bootstrap.bundle.js"></script>
+
 </body>
 
 </html>
