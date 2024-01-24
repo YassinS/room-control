@@ -5,34 +5,81 @@
  *          Fetched Data will be given to HTML for Output
  */
 
-var id = "p_id 2343"; //BIGINT?
-var created_at = "p_created_at - 2023-05-20"; //Date format (Acc: .x*6 ms)
-var co2 = "p_co2"; //
-var temperature = "p_temp"; //C`elsius
-var humidity = "p_humid"; //in Percent
-var pressure = "p_press"; //
-var dust = "p_dust"; //
-let dataObj;
 
-function getSensorData() {
-  console.log("XX");
-  dataObj = fetch("http://172.16.111.9:5555/all"); //JSON.parse("http://172.16.111.9:5555/all");
-  console.log(dataObj);
+/**
+ * Needed Implementations left
+ * Filter functions:
+ *    Filter by id
+ *    Filter by Date
+ *    Filter by co2 range
+ *    Filter by temp range
+ *    Filter by humid range
+ *    Filter by pressure range
+ *    Filter by dust range
+ *    Filter Attention data
+ * 
+ *    Add value Type to sensor Readings
+ * 
+ */
+
+let sensordata;
+let filteredData;
+
+function displayData( displayObj, index ){
+  document.querySelector("#id_Out").innerHTML         = "id: " + displayObj[index].id;
+  document.querySelector("#created_at_Out").innerHTML = "Creation Date: " + displayObj[index].created_at;
+  document.querySelector("#co2_Out").innerHTML        = "Co2 Value: " + displayObj[index].co2;
+  document.querySelector("#temp_Out").innerHTML       = "Temp Value: " + displayObj[index].temperature;
+  document.querySelector("#humid_Out").innerHTML      = "Humidity Value: " + displayObj[index].humidity;
+  document.querySelector("#press_Out").innerHTML      = "Pressure Value: " + displayObj[index].pressure;
+  document.querySelector("#dust_Out").innerHTML       = "Dust Value: " + displayObj[index].dust;
 }
 
-// _Out marks TextOutput
-function setDisplayData() {
-  console.log("setX");
-  getSensorData();
-  //document.querySelector("#id_Out").innerHTML = dataObj.id[0];
-  document.querySelector("#created_at_Out").innerHTML = dataObj.created_at[0];
-  document.querySelector("#co2_Out").innerHTML = dataObj.co2[0];
-  document.querySelector("#temp_Out").innerHTML = dataObj.temperature[0];
-  document.querySelector("#humid_Out").innerHTML = dataObj.humidity[0];
-  document.querySelector("#press_Out").innerHTML = dataObj.pressure[0];
-  document.querySelector("#dust_Out").innerHTML = dataObj.dust[0];
+function filterValues(){
+  console.log("Start of Function")
+  console.log(
+    document.getElementById("filterID").value
+  );
+
+    filteredData = filterData( sensordata, document.getElementById("filterID").value);
+    displayData( filteredData, 0);
+
+  console.log("End of Function")
+  /*
+  document.querySelector("#filterID")
+  document.querySelector("#filterDate")
+  document.querySelector("#filterCO2")
+  */
 }
-//document.body.addEventListener(getSensorData());
-document.body.addEventListener(setDisplayData());
-//fetches sensorData from API1
-setDisplayData();
+
+//Ich glaub das funktioniert so nicht, beziehe daten ja ueber url...
+function filterData( jsonObj, filterValue ){
+  filteredData = jsonObj.filter(obj => {
+    //Add Filter input Array and switch through filter options
+    return obj.id == filterValue 
+  })
+}
+
+function sensorAPI(){
+  //fetch("http://172.16.111.9:5555/all");
+  fetch("../assets/jsonTest/sensordata.json")
+      .then((res) => {
+        return res.json();
+      })
+      .then((sensordata) => {
+        
+        displayData( sensordata, 3)
+        
+        console.log("done")
+      });
+}
+
+function initDataPage() {
+  sensorAPI();
+  //document.querySelector("#startFilterBtn").onclick = filterValues();
+  document.querySelector("#startFilterBtn").addEventListener("click", filterValues());
+}
+
+
+//fetches sensorData from API
+document.body.addEventListener(initDataPage());
