@@ -116,6 +116,8 @@ try:
 
             traffic_light_check(co2_mean, dust_mean)
             new_sensor_data.save()
+
+            start_time = time.time()
         time.sleep(interval)
 except KeyboardInterrupt:
     print(f"Total number of iterations: {num_of_data_points}")
