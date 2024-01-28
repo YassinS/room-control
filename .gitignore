@@ -56,3 +56,6 @@ mariadb_data
 web/frontend/node_modules
 web/frontend/note.txt
 web/frontend/public/assets/bootstrap
+
+#editor
+.zed/settings.json
