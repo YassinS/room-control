@@ -87,10 +87,6 @@ try:
             dust_vals.append(dust)
 
             num_of_data_points += 1
-            # output = "{0:.2f} C,{1:.2f} hPa,{2:.2f} %RH".format(
-            #     sensor.data.temperature, sensor.data.pressure, sensor.data.humidity
-            # )
-            # print(
         end_time = time.time()
 
         if end_time - start_time > 60:
